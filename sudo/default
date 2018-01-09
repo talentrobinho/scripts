@@ -1,0 +1,17 @@
+## Fobidden Passwd
+Cmnd_Alias  FORBIDDEN_NORMAL = !/usr/bin/passwd
+
+## Services
+Cmnd_Alias SERVICES = /sbin/service, /sbin/chkconfig
+
+## Processes
+Cmnd_Alias PROCESSES = /bin/nice, /bin/kill, /usr/bin/kill, /usr/bin/killall
+
+## Installation and management of software
+Cmnd_Alias SOFTWARE = /bin/rpm, /usr/bin/up2date, /usr/bin/yum
+
+## Delegating permissions
+Cmnd_Alias DELEGATING = /bin/chown, /bin/chmod, /bin/chgrp
+
+test ALL=(root)  NOPASSWD: ALL, FORBIDDEN_NORMAL
+ALL ALL=(ALL)  NOPASSWD: SERVICES, PROCESSES, SOFTWARE, DELEGATING
