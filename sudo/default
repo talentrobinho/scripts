@@ -1,5 +1,5 @@
-## Fobidden Passwd
-Cmnd_Alias  FORBIDDEN_NORMAL = !/usr/bin/passwd
+## Fobidden Command
+Cmnd_Alias  FORBIDDEN_NORMAL = !/usr/bin/passwd, !/usr/sbin/visudo, !/bin/rm, !/bin/su, !/bin/chmod, !/bin/chown, !/bin/chgrp, !/usr/bin/vim, !/bin/kill, !/usr/bin/kill, !/usr/bin/killall, !/sbin/shutdown -h now, !/bin/bash, !/bin/sh
 
 ## Services
 Cmnd_Alias SERVICES = /sbin/service, /sbin/chkconfig
@@ -13,5 +13,6 @@ Cmnd_Alias SOFTWARE = /bin/rpm, /usr/bin/up2date, /usr/bin/yum
 ## Delegating permissions
 Cmnd_Alias DELEGATING = /bin/chown, /bin/chmod, /bin/chgrp
 
-test ALL=(root)  NOPASSWD: ALL, FORBIDDEN_NORMAL
-ALL ALL=(ALL)  NOPASSWD: SERVICES, PROCESSES, SOFTWARE, DELEGATING
+ALL ALL=(ALL)  NOPASSWD: ALL
+ALL ALL=(root)  NOPASSWD: ALL, FORBIDDEN_NORMAL
+op_biz ALL=(root)  NOPASSWD: ALL
