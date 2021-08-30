@@ -48,9 +48,7 @@ if __name__ == "__main__":
         "-m",
         "--memory",
         default=1,
-        help="""每个进程内存占用，单位GB, 默认1GB
-		-c指定的cpu核数乘以此值
-		必须小于物理内存总数"""
+        help="""内存占用，单位GB, 默认1GB"""
         )
 
     args = parse.parse_args()
