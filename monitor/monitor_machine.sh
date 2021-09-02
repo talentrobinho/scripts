@@ -3,7 +3,7 @@
 ####################
 ### var zone
 ####################
-disk_threshold=10
+disk_threshold=100
 machine_name=$(hostname)
 
 ####################
@@ -11,7 +11,8 @@ machine_name=$(hostname)
 ####################
 alert()
 {
-    msg=$1
+    msg="$machine_name:
+    $1"
     curl "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=****" \
 	-H "Content-Type: application/json" \
 	-d \
@@ -41,11 +42,9 @@ monitor_disk()
 ####################
 ### main zone
 ####################
-alert_disk_content="$machine_name:
-$(monitor_disk)"
+alert_disk_content="$(monitor_disk)"
 
-alert "$alert_disk_content"
-if [[ "x$alert_disk_content" == "x" ]]
+if [[ "$alert_disk_content" =~ "dev" ]]
 then
     alert "$alert_disk_content"
 fi
